@@ -4,45 +4,70 @@
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
+	    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
     core:require="{
         formatter: 'moyotech/model/formatter'
     }">
 
-    <Page id="mainPage">
-        <customHeader>
-            <Toolbar>
-                <Button icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress"/>
-                <Image src="./images/logo.webp" height="6rem"/>
-                <MenuButton text="Home" type="Transparent"/>
-                <ToolbarSpacer/>
-                <SearchField placeholder="Search in Apps" width="25%"/>
-                <ToolbarSpacer/>
-                <Button icon="sap-icon://customer" type="Transparent"/>
-                <Button icon="sap-icon://feedback" type="Transparent"/>
-                <Button icon="sap-icon://globe" type="Transparent"/>
-                <Button icon="sap-icon://user-settings" type="Transparent"/>
-                <Button icon="sap-icon://log" type="Transparent"/>
-                <Avatar initials="MR"/>
-            </Toolbar>
-        </customHeader>
+   <Page id="MainPage">
+   <customHeader>
+   <Toolbar >
+   <Button icon="sap-icon://menu2"></Button>
+   <Image src="./images/logo.webp" height="6rem"></Image>
+   <MenuButton text="Home"></MenuButton>
+   <ToolbarSpacer />
+   <SearchField placeholder="Search" search="Search ..." width="auto"></SearchField>
+   <ToolbarSpacer />
+   <Button icon="sap-icon://customer" type="Transparent"/>
+   <Button icon="sap-icon://feedback" type="Transparent"/>
+   <Button icon="sap-icon://user-settings" type="Transparent"/>
+   <Button icon="sap-icon://log" type="Transparent"/>
+   <Avatar initials="MR"></Avatar> 
+   </Toolbar>
+   </customHeader>
+   <subHeader>
+   <Toolbar >
+    <Link text="Products" emphasized="true"/>
+    <Link text="Employees"/>
+    <MenuButton text="Customers" type="Transparent"/>
+    <MenuButton text="Categories" type="Transparent"/>
+    <Link text="Orders"/>
+    <Link text="Suppliers"/>
+    <MenuButton text="Regions" type="Transparent"/>
+    <MenuButton text="Invoices" type="Transparent"/>
+    <ToolbarSpacer/>
+    <Button icon="sap-icon://menu" type="Transparent"/>
+   </Toolbar>
+   </subHeader>
+   <content>
+   <VBox>
+<smartFilterBar:SmartFilterBar 
+    id="smartFilterBar"
+    entitySet="Products"
+>
+	<smartFilterBar:controlConfiguration>
+	<smartFilterBar:ControlConfiguration id="idProduct" visibleInAdvancedArea="true" label="Product ID" key="ProductID"></smartFilterBar:ControlConfiguration>
+	<smartFilterBar:ControlConfiguration id="UnitPrice" visibleInAdvancedArea="true" label="UnitPrice" key="UnitPrice"></smartFilterBar:ControlConfiguration>
+	<smartFilterBar:ControlConfiguration id="quantinty" visibleInAdvancedArea="true" label="Quantity" key="Quantity"></smartFilterBar:ControlConfiguration>
+	</smartFilterBar:controlConfiguration>
+</smartFilterBar:SmartFilterBar>
 
-        <subHeader>
-            <Toolbar>
-                <Link text="Home" emphasized="true"/>
-                <Link text="Employees"/>
-                <MenuButton text="Customers" type="Transparent"/>
-                <Link text="Products"/>
-                <MenuButton text="Categories" type="Transparent"/>
-                <Link text="Orders"/>
-                <Link text="Suppliers"/>
-                <MenuButton text="Regions" type="Transparent"/>
-                <MenuButton text="Invoices" type="Transparent"/>
-                <ToolbarSpacer/>
-                <Button icon="sap-icon://menu" type="Transparent"/>
-            </Toolbar>
-        </subHeader>
+<smartTable:SmartTable
+    id="smartTable"
+    entitySet="Products"
+    smartFilterId="smartFilterBar"
+    tableType="ResponsiveTable"
+    useVariantManagement="true"
+    enableAutoBinding="true"
+    header="Product List"
+	>
+	<Table id="idResponsiveTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster"></Table>
 
-        <content>
-        </content>
-    </Page>
+</smartTable:SmartTable>
+
+
+         </VBox>
+   </content>
+   </Page>
 </mvc:View>

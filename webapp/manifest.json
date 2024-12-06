@@ -1,88 +1,82 @@
 {
 	"_version": "1.12.0",
-
 	"sap.app": {
-		"id": "moyotech",
-		"type": "application",
-		"i18n": "i18n/i18n.properties",
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
-		"applicationVersion": {
-			"version": "${version}"
-		}
+	  "id": "moyotech",
+	  "type": "application",
+	  "i18n": "i18n/i18n.properties",
+	  "title": "{{appTitle}}",
+	  "description": "{{appDescription}}",
+	  "applicationVersion": {
+		"version": "${version}"
+	  }
 	},
-
 	"sap.ui": {
-		"technology": "UI5",
-		"icons": {},
-		"deviceTypes": {
-			"desktop": true,
-			"tablet": true,
-			"phone": true
-		}
+	  "technology": "UI5",
+	  "icons": {},
+	  "deviceTypes": {
+		"desktop": true,
+		"tablet": true,
+		"phone": true
+	  }
 	},
-
 	"sap.ui5": {
-		"rootView": {
-			"viewName": "moyotech.view.App",
-			"type": "XML",
-			"async": true,
-			"id": "app"
-		},
-		"resources": {
-			"css": [{
-				"uri": "css/styles.css"
-			}]
-		},
-
-		"dependencies": {
-			"minUI5Version": "1.130.2",
-			"libs": {
-				"sap.ui.core": {},
-				"sap.m": {},
-				"sap.tnt": {},
-				"sap.ui.layout": {}
-			}
-		},
-
-		"handleValidation": true,
-
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
-		},
-
-		"models": {
-			"i18n": {
-				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": {
-					"bundleName": "moyotech.i18n.i18n"
-				}
-			}
-		},
-
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"viewPath": "moyotech.view",
-				"controlId": "app",
-				"controlAggregation": "pages",
-				"async": true
-			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "main",
-					"target": "main"
-				}
-			],
-			"targets": {
-				"main": {
-					"viewId": "main",
-					"viewName": "Main"
-				}
-			}
+	  "rootView": {
+		"viewName": "moyotech.view.App",
+		"type": "XML",
+		"async": true,
+		"id": "app"
+	  },
+	  "dependencies": {
+		"minUI5Version": "1.130.2",
+		"libs": {
+		  "sap.ui.core": {},
+		  "sap.m": {},
+		  "sap.uxap": {}
 		}
-	}
+	  },
+	  "contentDensities": {
+		"compact": true,
+		"cozy": true
+	  },
+	  "models": {
+  "i18n": {
+    "type": "sap.ui.model.resource.ResourceModel",
+    "settings": {
+      "bundleName": "moyotech.i18n.i18n"
+    }
+  },
+  "odataModel": {
+    "type": "sap.ui.model.odata.v2.ODataModel",
+    "uri": "/odata/",
+    "settings": {
+      "metadataUrlParams": {},
+      "defaultBindingMode": "TwoWay"
+	}}
 }
+,
+	  "routing": {
+		"config": {
+		  "routerClass": "sap.m.routing.Router",
+		  "viewType": "XML",
+		  "viewPath": "moyotech.view",
+		  "controlId": "app",
+		  "controlAggregation": "pages",
+		  "async": true
+		},
+		"routes": [
+		  {
+			"pattern": "",
+			"name": "main",
+			"target": "main"
+		  }
+		],
+		"targets": {
+		  "main": {
+			"viewId": "main",
+			"viewName": "Main"
+		  }
+		}
+	  }
+	}
+  }
+  
