@@ -1,0 +1,11 @@
+Button:hover {
+    --sapButton_TextColor: #fc7a3c !important; 
+}
+
+Link {
+    color: #fc7a3c; 
+}
+
+Button, Link {
+    transition: background-color 0.3s, color 0.3s;
+}

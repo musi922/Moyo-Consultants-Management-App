@@ -29,12 +29,19 @@
 			"async": true,
 			"id": "app"
 		},
+		"resources": {
+			"css": [{
+				"uri": "css/styles.css"
+			}]
+		},
 
 		"dependencies": {
 			"minUI5Version": "1.130.2",
 			"libs": {
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.m": {},
+				"sap.tnt": {},
+				"sap.ui.layout": {}
 			}
 		},
 
